@@ -1,4 +1,43 @@
-## Proxmox VE 7.x 相关教程
+## PVE 直通+CPU/硬盘/温度显示+换源/去订阅+CPU睿频模式 一键脚本
+
+![png](./pic/55.png)
+
+- 原始脚本来自 [shidahuilang/pve](https://github.com/shidahuilang/pve/blob/main/pve.sh)
+
+- 轻微修改，支持 PVE9 (trixie)！
+
+- 防止系统没安装curl，使用不了一键命令，先执行安装curl命令：
+```sh
+apt -y update && apt -y install curl wget sudo || yum install -y curl wget sudo || apk add curl bash
+```
+
+- **一键脚本：**
+```
+bash -c "$(curl -fsSL https://raw.githubusercontent.com/xiangfeidexiaohuo/ProxmoxVE-7.0-DIY/refs/heads/master/pve.sh)"
+```
+![png](./pic/56.png)
+
+- **Ceph 源：**
+
+- PVE7：
+```
+echo "deb https://mirrors.tuna.tsinghua.edu.cn/proxmox/debian/ceph-quincy bullseye main" > /etc/apt/sources.list.d/ceph.list
+```
+
+- PVE8：
+```
+echo "deb https://mirrors.tuna.tsinghua.edu.cn/proxmox/debian/ceph-quincy bookworm main" > /etc/apt/sources.list.d/ceph.list
+```
+
+- PVE9：
+```
+echo "deb https://mirrors.tuna.tsinghua.edu.cn/proxmox/debian/ceph-squid trixie no-subscription" > /etc/apt/sources.list.d/ceph.list
+```
+
+***
+***
+
+## Proxmox VE 7.x 相关教程（7.x 旧版手动修改，有参考价值，弃用！）
 
 * **包括但不限于换源、直通、界面显示温度/频率等。**
 
